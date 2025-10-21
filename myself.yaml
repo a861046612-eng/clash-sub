@@ -1,19 +1,26 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
 proxies:
-  - name: "香港中转节点"
+  - name: "MyVPS"
     type: vless
-    server: 47.82.69.174   # ← 替换为香港VPS的真实IP
-    port: 10010                # ← socat 监听的端口
-    uuid: bcfb953a-8d95-48f4-9b2d-edab0188d4d5  # ← 保持与日本VPS相同的UUID
+    server: 47.79.148.94      # ← 改成你的VPS IP
+    port: 10086
+    uuid: bcfb953a-8d95-48f4-9b2d-edab0188d4d5  # ← 你的UUID
     tls: false
     network: ws
     ws-opts:
-      path: /ws                # ← 保持与日本VPS相同的路径
+      path: /ws
 
 proxy-groups:
   - name: 🚀 国外流量
     type: select
     proxies:
-      - 香港中转节点           # ← 使用新的香港节点
+      - MyVPS
       - DIRECT
 
 rules:
