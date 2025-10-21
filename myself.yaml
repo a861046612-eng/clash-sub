@@ -8,7 +8,7 @@ external-controller: 127.0.0.1:9090
 proxies:
   - name: "MyVPS"
     type: vless
-    server: 47.79.148.94            # ← 美国 VPS IPv4
+    server: 47.79.148.94            # ← 美国 VPS IPv4（不改）
     port: 10086
     uuid: bcfb953a-8d95-48f4-9b2d-edab0188d4d5
     tls: false
@@ -18,8 +18,8 @@ proxies:
 
   - name: "HK-Relay"
     type: vless
-    server: 47.82.69.174                # ← 香港 VPS IPv4（例：103.123.45.67）
-    port: 30000                     # ← 你刚放行的端口（例：30000）
+    server: 47.82.69.174                  # ← ① 改成香港 VPS 的 IPv4 地址（例：103.123.45.67）
+    port: 10086                       # ← ② 改成你放行的端口（例：30000）
     uuid: 66d71bdc-78ee-4bd9-9b8f-20734ad56484
     tls: false
     network: ws
@@ -30,7 +30,7 @@ proxy-groups:
   - name: 🚀 国外流量
     type: select
     proxies:
-      - Relay-HK-US     # ① 晚高峰用中继（香港→美国）
+      - Relay-HK-US     # ① 晚高峰用中继
       - MyVPS           # ② 原直连备用
       - DIRECT
 
@@ -42,4 +42,3 @@ proxy-groups:
 
 rules:
   - MATCH,🚀 国外流量
-
