@@ -18,7 +18,7 @@ proxies:
 
   - name: "HK-Relay"
     type: vless
-    server: 香港IPv4                # ← 香港 VPS IPv4（例：103.123.45.67）
+    server: 47.82.69.174                # ← 香港 VPS IPv4（例：103.123.45.67）
     port: 30000                     # ← 你刚放行的端口（例：30000）
     uuid: 66d71bdc-78ee-4bd9-9b8f-20734ad56484
     tls: false
@@ -42,3 +42,4 @@ proxy-groups:
 
 rules:
   - MATCH,🚀 国外流量
+
